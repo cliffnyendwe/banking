@@ -7,7 +7,7 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "prebuild": "jest",
-    "build": "next build"
+    "build": "babel src -d lib && next build"
   },
   "keywords": [],
   "author": "",
