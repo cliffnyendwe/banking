@@ -6,8 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "babel src -d lib",
-    "prebuild": "jest"
+    "prebuild": "jest",
+    "build": "next build"
   },
   "keywords": [],
   "author": "",
