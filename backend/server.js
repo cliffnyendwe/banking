@@ -26,7 +26,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const PORT = process.env.PORT || 5473;
+const PORT = process.env.PORT || 3001;
 
 // Default route to prevent 404 errors on root
 app.get("/", (req, res) => {
@@ -37,7 +37,8 @@ app.use("/auth", authRoutes);
 app.use("/account", accountRoutes);
 app.use("/transaction", transactionRoutes);
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server is up and running at port ${PORT}`);
   connectDB();
 });
+
