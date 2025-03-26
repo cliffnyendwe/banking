@@ -26,7 +26,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5473;
 
 // Default route to prevent 404 errors on root
 app.get("/", (req, res) => {
