@@ -8,6 +8,7 @@ const authRoutes = require("./routes/auth");
 const connectDB = require("./db/connect");
 const cookieParser = require("cookie-parser");
 const transactionRoutes = require("./routes/transactions");
+
 dotenv.config();
 const app = express();
 app.use(morgan("dev"));
@@ -15,7 +16,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: process.env.CLIENT_ORIGIN ,
+    origin: process.env.CLIENT_ORIGIN || "http://localhost:3000",
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization", "Accept"],
@@ -26,6 +27,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const PORT = process.env.PORT || 5473;
+
+// Default route to prevent 404 errors on root
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
+
 app.use("/auth", authRoutes);
 app.use("/account", accountRoutes);
 app.use("/transaction", transactionRoutes);
